@@ -3,6 +3,7 @@
 document.getElementById('upload_link').onclick = function() {
   document.getElementById('input_csv').click();
   userUploadFlag = true;
+  init();
 };
 
 /*
