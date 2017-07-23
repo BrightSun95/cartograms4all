@@ -19,10 +19,10 @@ function loadMySession() {
 
 // sets flags and file name when loading other user's CSV from server
 function loadOtherSession() {
-    console.log(nameOfLoadFile.substring(7,24));
+  console.log(nameOfLoadFile.substring(7,23));
   if(nameOfLoadFile.length!=27) {
     alert("Error: invalid session ID. Please enter a valid session ID.");
-  } else if(nameOfLoadFile.substring(7,24)==userSessionID && !haveSavedFlag){
+  } else if(nameOfLoadFile.substring(7,23)==userSessionID && !haveSavedFlag){
     alert("Error: you entered your own session ID but have no info saved. Please save your session info.");
   } else {
     serverDownloadFlag = true;
