@@ -19,7 +19,7 @@ var carto;
 var geometries;
 var userSessionCookie; // name of current user's cookie that stores session ID
 var userSessionID; // user's session ID as read from cookie
-var nameOfLoadFile = DEFAULT_DATA; // name of remote CSV being used (usually another user's session ID)
+var nameOfLoadFile; // name of remote CSV being used (usually another user's session ID)
 var userData; // path to remote CSV being used
 var CSV; // locally stored csv file object
 
@@ -30,6 +30,7 @@ var CSV; // locally stored csv file object
 console.log("Running Cartograms 4 All Web App");
 
 $(document).ready(function() {
+  nameOfLoadFile = DEFAULT_DATA;
   // if not already set, set new cookie.
   var session_id = generateSessionID(16);
   if(readCookie('userSessionCookie') === null) {
@@ -76,6 +77,7 @@ function init() {
   // if using neither, set to defaults
   if(!userUploadFlag && !serverDownloadFlag){
     userData = DEFAULT_DATA;
+
     console.log("3: "+userData);
   }
 
