@@ -15,7 +15,7 @@ function loadMySession(){
 
 // sets flags and file name when loading other user's CSV from server
 function loadOtherSession(){
-  if(nameOfLoadFile.length==16){
+  if(nameOfLoadFile.length==27){
     serverDownloadFlag = true;
     userUploadFlag = false;
   }else {
