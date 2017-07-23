@@ -2,6 +2,7 @@
 function saveSession(){
   saveFlag = true;
   init();
+  saveFlag = false;
 }
 
 // sets flags and file name when loading current user's CSV from server
