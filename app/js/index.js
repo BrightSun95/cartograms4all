@@ -56,7 +56,7 @@ Or we could just put the main logic back in index.html, even though that's not a
 
 function init() {
 
-    CSV = document.getElementById('input_csv').files[0];
+  CSV = document.getElementById('input_csv').files[0];
 
   if(userSessionID == null) {
     userSessionID = readCookie('userSessionCookie');
