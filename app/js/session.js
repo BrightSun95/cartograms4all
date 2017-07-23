@@ -13,7 +13,7 @@ function saveSession(){
 function loadMySession(){
   serverDownloadFlag = true;
   userUploadFlag = false;
-  nameOfLoadFile = userSessionID;
+  nameOfLoadFile = "upload/" + userSessionID + ".csv";
   init();
 }
 
@@ -32,7 +32,7 @@ function shareSessionID(element){
 document.getElementById('paste_session_id').onkeydown = function(event) {
   var e = event || windows.event;
   if (e.keyCode==13){
-    nameOfLoadFile = document.getElementById('paste_session_id').value; // gets the session_id from the form for accessing other user's CSV's
+    nameOfLoadFile = "upload/"+ document.getElementById('paste_session_id').value +".csv"; // gets the session_id from the form for accessing other user's CSV's
     loadOtherSession(); // set flags and file name
     init();
   }

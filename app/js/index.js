@@ -18,7 +18,7 @@ var carto;
 var geometries;
 var userSessionCookie; // name of current user's cookie that stores session ID
 var userSessionID; // user's session ID as read from cookie
-var nameOfLoadFile; // name of remote CSV being used (usually another user's session ID)
+var nameOfLoadFile = DEFAULT_DATA; // name of remote CSV being used (usually another user's session ID)
 var userData; // path to remote CSV being used
 var CSV; // locally stored csv file object
 
