@@ -137,6 +137,6 @@ function saveByName() {
   data.append("userID", userSessionID);
   data.append("otherFileName", nameOfLoadFile);
   var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-  XHR.open('post', 'uploader/upload/saveByName.php', true);
+  XHR.open('post', 'uploader/saveByName.php', true);
   XHR.send(data);
 }
