@@ -1,8 +1,12 @@
 // sets flags when writing the user's current CSV to the server
 function saveSession(){
-  saveFlag = true;
-  init();
-  saveFlag = false;
+  if(nameOfLoadFile.length==16){
+    saveFlag = true;
+    init();
+    saveFlag = false;
+  }else {
+    alert("Error: invalid session ID. Please enter a valid session ID");
+  }
 }
 
 // sets flags and file name when loading current user's CSV from server
