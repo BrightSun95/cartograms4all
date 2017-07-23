@@ -1,12 +1,8 @@
 // sets flags when writing the user's current CSV to the server
 function saveSession(){
-  if(nameOfLoadFile.length==16){
     saveFlag = true;
     init();
     saveFlag = false;
-  }else {
-    alert("Error: invalid session ID. Please enter a valid session ID");
-  }
 }
 
 // sets flags and file name when loading current user's CSV from server
@@ -19,8 +15,12 @@ function loadMySession(){
 
 // sets flags and file name when loading other user's CSV from server
 function loadOtherSession(){
-  serverDownloadFlag = true;
-  userUploadFlag = false;
+  if(nameOfLoadFile.length==16){
+    serverDownloadFlag = true;
+    userUploadFlag = false;
+  }else {
+    alert("Error: invalid session ID. Please enter a valid session ID");
+  }
 }
 
 // loads the session ID into sharing form
