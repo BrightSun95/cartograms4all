@@ -2,6 +2,7 @@
 var userUploadFlag = false; // true if using user-uploaded CSV
 var serverDownloadFlag = false; //true if using CSV from server
 var saveFlag = false; // true if saving your current session
+var haveSavedFlag = false; // true if you have saved a csv on the server
 
 // Global variables
 var csvFields;

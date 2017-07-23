@@ -1,31 +1,36 @@
 // sets flags when writing the user's current CSV to the server
-function saveSession(){
-    saveFlag = true;
-    init();
-    saveFlag = false;
+function saveSession() {
+  saveFlag = true;
+  init();
+  saveFlag = false;
 }
 
 // sets flags and file name when loading current user's CSV from server
-function loadMySession(){
-  serverDownloadFlag = true;
-  userUploadFlag = false;
-  nameOfLoadFile = "upload/" + userSessionID + ".csv";
-  init();
+function loadMySession() {
+  if(haveSavedFlag) {
+    serverDownloadFlag = true;
+    userUploadFlag = false;
+    nameOfLoadFile = "upload/" + userSessionID + ".csv";
+    init();
+  } else {
+    alert("Error: no session info saved. Please save your session info.");
+  }
 }
 
 // sets flags and file name when loading other user's CSV from server
-function loadOtherSession(){
-  if(nameOfLoadFile.length==27){
+function loadOtherSession() {
+  if(nameOfLoadFile.length!=27) {
+    alert("Error: invalid session ID. Please enter a valid session ID.");
+  } else if(nameOfLoadFile.substring(7,24)==userSessionID && !haveSavedFlag){
+    alert("Error: you entered your own session ID but have no info saved. Please save your session info.");
     serverDownloadFlag = true;
     userUploadFlag = false;
-  }else {
-    alert("Error: invalid session ID. Please enter a valid session ID");
   }
 }
 
 // loads the session ID into sharing form
-function shareSessionID(element){
-  if(userSessionID!=null) element.value = userSessionID;
+function shareSessionID(element) {
+  if(userSessionID != null) element.value = userSessionID;
 }
 
 // gets a session ID from user and uses it to load the corresponding user's CSV
@@ -127,6 +132,7 @@ function saveByFile(userCSV) {
       console.log('ERRORS: ' + textStatus);
     }
   });
+  haveSavedFlag = true;
 }
 
 //Save CSV to uploader/upload path via an ajax call
@@ -139,4 +145,5 @@ function saveByName() {
   var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
   XHR.open('post', 'uploader/saveByName.php', true);
   XHR.send(data);
+  haveSavedFlag = true;
 }
