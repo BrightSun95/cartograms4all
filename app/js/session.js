@@ -27,6 +27,7 @@ function loadOtherSession() {
   } else {
     serverDownloadFlag = true;
     userUploadFlag = false;
+    init();
   }
 }
 
@@ -41,7 +42,6 @@ document.getElementById('paste_session_id').onkeydown = function(event) {
   if (e.keyCode==13){
     nameOfLoadFile = "upload/"+ document.getElementById('paste_session_id').value +".csv"; // gets the session_id from the form for accessing other user's CSV's
     loadOtherSession(); // set flags and file name
-    init();
   }
 }
 
