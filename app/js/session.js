@@ -23,6 +23,7 @@ function loadOtherSession() {
     alert("Error: invalid session ID. Please enter a valid session ID.");
   } else if(nameOfLoadFile.substring(7,24)==userSessionID && !haveSavedFlag){
     alert("Error: you entered your own session ID but have no info saved. Please save your session info.");
+    console.log(nameOfLoadFile.substring(7,24));
   } else {
     serverDownloadFlag = true;
     userUploadFlag = false;
