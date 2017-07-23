@@ -69,7 +69,7 @@ function init() {
   }
   // if using CSV downloaded from server
   if(!userUploadFlag && serverDownloadFlag) {
-    userData = "../uploader/upload/" + nameOfLoadFile + ".csv;";
+    userData = "uploader/upload/" + nameOfLoadFile + ".csv;";
     console.log("2: "+userData);
   }
   // if using neither, set to defaults

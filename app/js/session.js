@@ -64,7 +64,7 @@ function saveByFile(userCSV) {
       if (typeof data.error === 'undefined') {
         // Success so call function to process the form
         //submitForm(event, data);
-  console.log('Success' + textStatus);
+        console.log('Success' + textStatus);
       } else {
         // Handle errors here
         console.log('ERRORS: ' + data.error);
