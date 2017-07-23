@@ -74,7 +74,6 @@ function saveByFile(userCSV) {
       console.log('ERRORS: ' + textStatus);
     }
   });
-*/
 }
 
 //Save CSV to uploader/upload path via an ajax call
