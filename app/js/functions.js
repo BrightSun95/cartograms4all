@@ -1,14 +1,4 @@
-// DATASHEET CONFIG
-var DEFAULT_DATA = "data/nst_2011.csv";
-var DEFAULT_TOPO = "data/us-states.topojson";
-var USER_DIRECTORY = "uploader/upload/";
-var USER_CSV; // holds object containing .csv file
-var USER_TOPO;
-var CSV_URL; // DOMString containing URL representing USER_CSV
-
-var fields;
-var states;
-
+//------------functions.js----------------------//
 //Return usable object from CSV file
 function getCSVFields(callback, CSV) {
   var dataset = Papa.parse(CSV, {

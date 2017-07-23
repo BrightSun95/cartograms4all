@@ -1,3 +1,5 @@
+//------------session.js----------------------//
+
 // sets flags when writing the user's current CSV to the server
 function saveSession() {
   saveFlag = true;

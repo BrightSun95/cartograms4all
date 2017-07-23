@@ -1,4 +1,4 @@
-//------------Input Button Stuff----------------------//
+//------------ui.js----------------------//
 
 document.getElementById('upload_link').onclick = function() {
   document.getElementById('input_csv').click();

@@ -1,3 +1,5 @@
+//------------index.js----------------------//
+
 // Flags
 var userUploadFlag = false; // true if using user-uploaded CSV
 var serverDownloadFlag = false; //true if using CSV from server
@@ -23,6 +25,17 @@ var nameOfLoadFile; // name of remote CSV being used (usually another user's ses
 var userData; // path to remote CSV being used
 var CSV; // locally stored csv file object
 
+// DATASHEET CONFIG
+var DEFAULT_DATA = "data/nst_2011.csv";
+var DEFAULT_TOPO = "data/us-states.topojson";
+var USER_DIRECTORY = "uploader/upload/";
+var USER_CSV; // holds object containing .csv file
+var USER_TOPO;
+var CSV_URL; // DOMString containing URL representing USER_CSV
+
+var fields;
+var states;
+
 
 /*
  * Main program instructions
@@ -30,7 +43,7 @@ var CSV; // locally stored csv file object
 console.log("Running Cartograms 4 All Web App");
 
 $(document).ready(function() {
-  nameOfLoadFile = DEFAULT_DATA;
+  nameOfLoadFile = "data/nst_2011.csv";
   // if not already set, set new cookie.
   var session_id = generateSessionID(16);
   if(readCookie('userSessionCookie') === null) {
