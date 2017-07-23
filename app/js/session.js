@@ -44,6 +44,55 @@ function generateSessionID(length) {
   return result;
 }
 
+// writes string_to_save to app/php/settings/<session_id>.json
+function writeToServer(session_id, string_to_save) {
+  var data = new FormData();
+  data.append("data", string_to_save);
+  data.append("name", session_id);
+  var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+  XHR.open('post', 'php/importSettings.php', true);
+  XHR.send(data);
+}
+
+// returns contents from app/php/settings/<session_id>.json as a string
+function readFromServer(session_id) {
+  var return_string;
+  var data = new FormData();
+  data.append("name", session_id);
+  var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+  //XHR.responseType = 'text';
+  XHR.onload = function() {
+    if (XHR.readyState === XHR.DONE) {
+      return_string = XHR.responseText;
+    }
+  }
+  XHR.open('post', 'php/exportSettings.php', false);
+  XHR.send(data);
+  return return_string;
+}
+
+//Import cookie information through an API that reads the content of sessionId.json
+//After importing, it will try to pull out the critical information like file/settings
+//It then sets it for the user
+function importUserSettings(sessionId) {
+  //call API
+  var jsonString = readFromServer(sessionId); // jsonString is read in from the correct file in php/settings folder
+  //Set value of userObj (global)
+  userObj = JSON.parse(jsonString);
+  userData = userObj['fileName'];
+  init(); //refresh the view
+}
+
+//Export cookie information and call API to write file as sessionId.json
+function exportUserSettings() {
+  createCookie("fileName", userData, 30, "/");
+  var userCookieJson = exportCookie(); // a string representation of the JSON
+  var session_id = readCookie('userSessionCookie'); // session_id is read from the cookie
+
+  //CALL API to write the cookie information into settings/<session_id>.json
+  writeToServer(session_id, userCookieJson);
+}
+
 //Save CSV to uploader/upload path via an ajax call
 //The saved CSV can be use for other user as it is public
 function saveByFile(userCSV) {

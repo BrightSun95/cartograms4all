@@ -20,33 +20,6 @@ function getCSVFields(callback, CSV) {
 
 }
 
-// writes string_to_save to app/php/settings/<session_id>.json
-function writeToServer(session_id, string_to_save) {
-  var data = new FormData();
-  data.append("data", string_to_save);
-  data.append("name", session_id);
-  var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-  XHR.open('post', 'php/importSettings.php', true);
-  XHR.send(data);
-}
-
-// returns contents from app/php/settings/<session_id>.json as a string
-function readFromServer(session_id) {
-  var return_string;
-  var data = new FormData();
-  data.append("name", session_id);
-  var XHR = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-  //XHR.responseType = 'text';
-  XHR.onload = function() {
-    if (XHR.readyState === XHR.DONE) {
-      return_string = XHR.responseText;
-    }
-  }
-  XHR.open('post', 'php/exportSettings.php', false);
-  XHR.send(data);
-  return return_string;
-}
-
 //Send fields array back inside the called function
 function parseFields(data, callback) {
   fields = [];
